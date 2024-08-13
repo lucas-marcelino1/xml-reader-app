@@ -1,1 +1,13 @@
-<h1> XML Reader - APP </h1>
+<h1 class="app-title">XML Reader - APP</h1>
+
+<% if user_signed_in? %>
+  <div class="welcome-message">Welcome <%= current_user.email %></div>
+  <div class="auth-buttons">
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout auth-buttons" %>
+  </div>
+<% else %>
+  <div class="auth-buttons">
+    <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-signup" %>
+    <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-signin" %>
+  </div>
+<% end %>

@@ -1,1 +1,57 @@
-// Entry point for your Sass build
+.app-title {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-message {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaço entre os botões */
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 120px;
+}
+
+.btn-signup {
+  background-color: #66bd46;
+
+  &:hover {
+    background-color: darken(#66bd46, 10%);
+  }
+}
+
+.btn-signin {
+  background-color: #1c559e;
+
+  &:hover {
+    background-color: darken(#1c559e, 10%);
+  }
+}
+
+.btn-signout {
+  background-color: #dc3545;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
