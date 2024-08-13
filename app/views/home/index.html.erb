@@ -5,6 +5,10 @@
   <div class="auth-buttons">
     <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout auth-buttons" %>
   </div>
+
+  <div class="upload-button-container">
+    <%= button_to "Upload File", new_document_path, method: :get, class: "btn btn-upload" %>
+  </div>
 <% else %>
   <div class="auth-buttons">
     <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-signup" %>

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   # Define routes for users using devise
   devise_for :users
+
+  resources :documents, only: [:new, :create]
 end

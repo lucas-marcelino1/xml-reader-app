@@ -1,0 +1,18 @@
+<h1> Make upload of a XML document </h1>
+
+<%= form_for @document do |f| %>
+
+  <% if @document.errors.any? %>
+      <%= @document.errors.full_messages.to_sentence.capitalize %>
+  <% end %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :upload, "Upload" %>
+  <%= f.text_field :upload %>
+
+  <%= link_to "Cancel", root_path %>
+  <%= f.submit data: { turbo: false } %>
+
+<% end %>
