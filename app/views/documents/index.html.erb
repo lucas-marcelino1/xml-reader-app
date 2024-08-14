@@ -1,0 +1,32 @@
+<div class="documents-index-page">
+  <div class="back-to-home">
+    <%= link_to 'Back to Home', root_path, class: 'btn btn-back' %>
+  </div>
+
+  <h1 class="page-title">Uploaded Documents</h1>
+
+  <table class="documents-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>File</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.name %></td>
+        <td>
+          <%= link_to 'Download File', download_document_path(document), class: 'btn btn-view' %>
+        </td>
+        <td>
+          <%= button_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-delete' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Upload New Document', new_document_path, class: 'btn btn-upload' %>
+</div>

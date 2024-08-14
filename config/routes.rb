@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   # Define routes for users using devise
   devise_for :users
 
-  resources :documents, only: [:new, :create]
+  resources :documents do
+    member do
+      get '/download', to: 'documents#download'
+    end
+  end
 end

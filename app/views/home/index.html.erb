@@ -1,9 +1,13 @@
 <h1 class="app-title">XML Reader - APP</h1>
 
 <% if user_signed_in? %>
-  <div class="welcome-message">Welcome <%= current_user.email %></div>
-  <div class="auth-buttons">
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout auth-buttons" %>
+  <div class="header-right">
+    <div class="welcome-message">Welcome <%= current_user.email %></div>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
+  </div>
+
+  <div class="uploaded-button-container">
+    <%= button_to "Documents Uploaded", documents_path, method: :get, class: "btn btn-uploaded" %>
   </div>
 
   <div class="upload-button-container">

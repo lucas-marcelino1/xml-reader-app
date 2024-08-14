@@ -5,11 +5,19 @@
   margin-bottom: 20px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .welcome-message {
   font-size: 1.25rem;
   color: #555;
-  margin-bottom: 15px;
-  text-align: center;
+  margin-right: 10px;
 }
 
 .auth-buttons {
@@ -19,10 +27,11 @@
   margin-top: 20px;
 }
 
-.upload-button-container {
+.upload-button-container,
+.uploaded-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .btn {
@@ -38,6 +47,14 @@
   min-width: 120px;
 }
 
+.btn-signout {
+  background-color: #dc3545;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
 .btn-signup {
   background-color: #66bd46;
 
@@ -51,14 +68,6 @@
 
   &:hover {
     background-color: darken(#1c559e, 10%);
-  }
-}
-
-.btn-signout {
-  background-color: #dc3545;
-
-  &:hover {
-    background-color: #c82333;
   }
 }
 
@@ -81,5 +90,127 @@
 
   &:active {
     transform: translateY(0);
+  }
+}
+
+.btn-uploaded {
+  background-color: #66bd46;
+  font-size: 1.5rem;
+  padding: 20px 40px;
+  border-radius: 30px;
+  min-width: 220px;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: darken(#66bd46, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.documents-index-page {
+
+  position: relative; /* Para permitir o posicionamento absoluto do botão de voltar */
+
+  .back-to-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    .btn-back {
+      background-color: #007bff;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(#007bff, 10%);
+      }
+    }
+  }
+
+  .page-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .documents-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 30px auto;
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &.btn-view {
+      background-color: #007bff;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    &.btn-delete {
+      background-color: #dc3545;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+
+    &.btn-upload {
+      display: block;
+      background-color: #28a745;
+      margin: 20px auto; /* Centraliza horizontalmente */
+      text-transform: uppercase;
+      padding: 12px 20px;
+      max-width: 250px; /* Limita a largura máxima do botão */
+      width: 100%; /* Garante que o botão ocupe a largura total até o máximo de 250px */
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
   }
 }
