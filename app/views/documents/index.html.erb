@@ -10,6 +10,7 @@
     <tr>
       <th>Name</th>
       <th>File</th>
+      <th>Status</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -20,6 +21,7 @@
         <td>
           <%= link_to 'Download File', download_document_path(document), class: 'btn btn-view' %>
         </td>
+        <td><%= document.status.humanize %></td>
         <td>
           <%= button_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-delete' %>
         </td>

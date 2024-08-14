@@ -116,8 +116,7 @@
 }
 
 .documents-index-page {
-
-  position: relative; /* Para permitir o posicionamento absoluto do botão de voltar */
+  position: relative;
 
   .back-to-home {
     position: absolute;
@@ -155,8 +154,9 @@
 
     th, td {
       padding: 12px 15px;
-      text-align: left;
+      text-align: center; /* Centraliza o texto em todas as células */
       border-bottom: 1px solid #ddd;
+      width: 25%; /* Cada coluna vai ocupar 25% da largura */
     }
 
     th {
@@ -202,11 +202,11 @@
     &.btn-upload {
       display: block;
       background-color: #28a745;
-      margin: 20px auto; /* Centraliza horizontalmente */
+      margin: 20px auto;
       text-transform: uppercase;
       padding: 12px 20px;
-      max-width: 250px; /* Limita a largura máxima do botão */
-      width: 100%; /* Garante que o botão ocupe a largura total até o máximo de 250px */
+      max-width: 250px;
+      width: 100%;
 
       &:hover {
         background-color: #218838;
@@ -214,3 +214,4 @@
     }
   }
 }
+
