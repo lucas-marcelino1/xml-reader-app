@@ -3,7 +3,6 @@ class ProcessXmlJob
 
   def perform(document_id)
     document = Document.find(document_id)
-    document.update!(status: :processing)
 
     file_path = document.upload.path # Obtém o caminho do arquivo XML
 
@@ -13,6 +12,12 @@ class ProcessXmlJob
     document.transaction do
       create_document_data(parsed_hash, document_id)
       document.update!(status: :completed)
+
+      Turbo::StreamsChannel.broadcast_replace_to(
+        "document_channel",  # Channel name
+        target: "document_#{document_id}_status",  # Target element ID
+        html: "<td id=document_#{document.id}_status>#{document.status.humanize}</td>"  # New content for the element
+      )
     end
   end
 

@@ -16,12 +16,12 @@
     </thead>
     <tbody>
     <% @documents.each do |document| %>
-      <tr>
+      <tr data-turbo-frame="document_<%= document.id %>">
         <td><%= document.name %></td>
         <td>
           <%= link_to 'Download File', download_document_path(document), class: 'btn btn-view' %>
         </td>
-        <td><%= document.status.humanize %></td>
+        <td id="document_<%= document.id %>_status"><%= document.status.humanize %></td>
         <td>
           <%= button_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-delete' %>
         </td>
@@ -30,5 +30,7 @@
     </tbody>
   </table>
 
-  <%= link_to 'Upload New Document', new_document_path, class: 'btn btn-upload' %>
+  <%= link_to 'Upload a XML File', new_document_path, class: 'btn btn-upload' %>
+
+  <%= turbo_stream_from "document_channel" %>
 </div>

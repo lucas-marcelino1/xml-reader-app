@@ -1,3 +1,37 @@
+.notice, .alert {
+  font-size: 1.25rem;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: none; /* Esconde o elemento por padrão */
+}
+
+.notice:not(:empty),
+.alert:not(:empty) {
+  display: block; /* Exibe o elemento quando ele não estiver vazio */
+}
+
+.notice {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Garante que o fundo ocupe toda a altura da tela */
+}
+
 .app-title {
   font-size: 2rem;
   color: #333;
@@ -7,8 +41,8 @@
 
 .header-right {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: column; /* Muda a direção do layout para coluna */
+  align-items: flex-end; /* Alinha itens à direita */
   position: absolute;
   top: 20px;
   right: 20px;
@@ -17,8 +51,32 @@
 .welcome-message {
   font-size: 1.25rem;
   color: #555;
-  margin-right: 10px;
 }
+
+.btn-signout {
+  padding: 8px 16px; /* Tamanho menor para o botão Sign out */
+  font-size: 0.875rem; /* Texto um pouco menor */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #dc3545;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espaçamento entre os botões */
+}
+
 
 .auth-buttons {
   display: flex;
@@ -47,14 +105,6 @@
   min-width: 120px;
 }
 
-.btn-signout {
-  background-color: #dc3545;
-
-  &:hover {
-    background-color: #c82333;
-  }
-}
-
 .btn-signup {
   background-color: #66bd46;
 
@@ -67,7 +117,7 @@
   background-color: #1c559e;
 
   &:hover {
-    background-color: darken(#1c559e, 10%);
+    background-color: #14447b;
   }
 }
 
@@ -124,7 +174,7 @@
     left: 20px;
 
     .btn-back {
-      background-color: #007bff;
+      background-color: #1c559e;
       padding: 10px 20px;
       font-size: 1rem;
       color: #fff;
@@ -136,7 +186,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: darken(#007bff, 10%);
+        background-color: #14447b;
       }
     }
   }
@@ -184,10 +234,10 @@
     transition: background-color 0.3s ease;
 
     &.btn-view {
-      background-color: #007bff;
+      background-color: #1c559e;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: #14447b;
       }
     }
 
@@ -201,7 +251,7 @@
 
     &.btn-upload {
       display: block;
-      background-color: #28a745;
+      background-color: #66bd46;
       margin: 20px auto;
       text-transform: uppercase;
       padding: 12px 20px;
@@ -209,9 +259,377 @@
       width: 100%;
 
       &:hover {
-        background-color: #218838;
+        background-color: darken(#66bd46, 10%);
       }
     }
   }
 }
 
+.signup-title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-label {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #66bd46;
+    outline: none;
+  }
+}
+
+.password-hint {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.actions {
+  text-align: center;
+}
+
+.auth-links-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-link {
+  font-size: 1.1rem;
+  color: #1c559e;
+  text-decoration: none;
+  margin: 10px 0;
+  display: inline-block;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken(#1c559e, 15%);
+  }
+}
+
+.auth-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1c559e;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: #14447b;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.login-title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-label {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #1c559e;
+    outline: none;
+  }
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .login-checkbox {
+    margin-right: 10px;
+  }
+}
+
+.actions {
+  text-align: center;
+}
+
+.upload-title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.upload-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  .form-label {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #1c559e;
+      outline: none;
+    }
+  }
+}
+
+.form-errors {
+  color: #dc3545;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+
+  .btn {
+    flex: 1; /* Faz com que ambos os botões ocupem o mesmo espaço */
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 10px; /* Espaçamento entre os botões */
+    max-width: 200px; /* Limita a largura máxima dos botões */
+  }
+
+  .btn-cancel {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  .btn-upload {
+    background-color: #66bd46;
+
+    &:hover {
+      background-color: darken(#66bd46, 10%);
+    }
+  }
+}
+
+/* Centralizar o conteúdo da página */
+.fullscreen-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Garante que o conteúdo seja centralizado verticalmente */
+  background-color: #fff; /* Cor de fundo da área ao redor */
+}
+
+/* Estilo para o título */
+.app-title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15%; /* Move o título 50% mais acima */
+}
+
+/* Estilo para o contêiner da caixa ao redor dos botões */
+.button-box {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para contraste */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espaçamento entre os botões */
+}
+
+/* Estilo específico para o botão Sign out */
+.btn-signout {
+  padding: 8px 16px; /* Menor tamanho para o botão Sign out */
+  font-size: 0.875rem; /* Texto um pouco menor */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #dc3545;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
+/* Garantir que os botões "Documents Uploaded" e "Upload File" tenham o mesmo tamanho */
+.btn-large {
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  min-width: 200px;
+}
+
+.btn-uploaded,
+.btn-upload {
+  @extend .btn-large;
+}
+
+.btn-uploaded {
+  background-color: #66bd46;
+
+  &:hover {
+    background-color: darken(#66bd46, 10%);
+  }
+}
+
+.btn-upload {
+  background-color: #1c559e;
+
+  &:hover {
+    background-color: #14447b;
+  }
+}
+
+.btn-signup,
+.btn-signin {
+  @extend .btn-large;
+}
+
+.btn-signup {
+  background-color: #66bd46;
+
+  &:hover {
+    background-color: darken(#66bd46, 10%);
+  }
+}
+
+.btn-signin {
+  background-color: #1c559e;
+
+  &:hover {
+    background-color: #14447b;
+  }
+}
+
+.forgot-password-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Ajuste o padding conforme necessário */
+}
+
+.forgot-password-title {
+  /* Reutilizando a classe do formulário de login */
+  @extend .login-title;
+}
+
+.forgot-password-label {
+  /* Reutilizando a classe do formulário de login */
+  @extend .login-label;
+}
+
+.forgot-password-input {
+  /* Reutilizando a classe do formulário de login */
+  @extend .login-input;
+}
+
+.forgot-password-actions {
+  /* Reutilizando a classe do formulário de login */
+  @extend .actions;
+}
+
+.forgot-password-button {
+  /* Reutilizando a classe do botão de login */
+  @extend .btn-signin;
+}

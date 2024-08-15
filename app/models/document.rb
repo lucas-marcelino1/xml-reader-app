@@ -17,6 +17,7 @@ class Document < ApplicationRecord
   private
 
   def set_process_xml_job
-    ProcessXmlJob.perform_async(id)
+    ProcessXmlJob.perform_in(1.seconds, id)
+    self.update!(status: :processing)
   end
 end

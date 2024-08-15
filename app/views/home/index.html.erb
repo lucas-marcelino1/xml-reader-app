@@ -1,21 +1,18 @@
-<h1 class="app-title">XML Reader - APP</h1>
+<div class="fullscreen-container">
+  <h1 class="app-title">XML Reader - APP</h1>
 
-<% if user_signed_in? %>
-  <div class="header-right">
-    <div class="welcome-message">Welcome <%= current_user.email %></div>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
-  </div>
+  <div class="button-box">
+    <% if user_signed_in? %>
+      <div class="header-right">
+        <div class="welcome-message">Welcome <%= current_user.email %></div>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
+      </div>
 
-  <div class="uploaded-button-container">
-    <%= button_to "Documents Uploaded", documents_path, method: :get, class: "btn btn-uploaded" %>
+      <%= button_to "Documents Uploaded", documents_path, method: :get, class: "btn btn-uploaded btn-large" %>
+      <%= button_to "Upload a XML File", new_document_path, method: :get, class: "btn btn-upload btn-large" %>
+    <% else %>
+      <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-signup btn-large" %>
+      <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-signin btn-large" %>
+    <% end %>
   </div>
-
-  <div class="upload-button-container">
-    <%= button_to "Upload File", new_document_path, method: :get, class: "btn btn-upload" %>
-  </div>
-<% else %>
-  <div class="auth-buttons">
-    <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-signup" %>
-    <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-signin" %>
-  </div>
-<% end %>
+</div>
