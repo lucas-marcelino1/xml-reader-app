@@ -38,5 +38,8 @@ module XmlReaderApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Configure sidekiq as active job queue adapter
+    config.active_job.queue_adapter = :sidekiq
   end
 end

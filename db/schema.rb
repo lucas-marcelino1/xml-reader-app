@@ -15,12 +15,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_172852) do
   enable_extension "plpgsql"
 
   create_table "document_data", force: :cascade do |t|
-    t.bigint "documents_id", null: false
+    t.bigint "document_id", null: false
     t.integer "kind", null: false
     t.jsonb "data", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documents_id"], name: "index_document_data_on_documents_id"
+    t.index ["document_id"], name: "index_document_data_on_document_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -43,5 +43,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_172852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "document_data", "documents", column: "documents_id"
+  add_foreign_key "document_data", "documents"
 end
