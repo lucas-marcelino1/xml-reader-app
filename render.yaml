@@ -2,7 +2,7 @@ databases:
   - name: xml-reader
     databaseName: xml_reader
     user: xml_reader_user
-    plan: free
+    plan: starter
 
 services:
   - type: web
