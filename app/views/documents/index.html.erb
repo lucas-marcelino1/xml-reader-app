@@ -1,17 +1,13 @@
 <div class="documents-index-page">
-  <div class="back-to-home">
-    <%= link_to 'Back to Home', root_path, class: 'btn btn-back' %>
-  </div>
-
-  <h1 class="page-title">Uploaded Documents</h1>
+  <h1 class="page-title">DOCUMENTOS</h1>
 
   <table class="documents-table">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>File</th>
-      <th>Processing Status</th>
-      <th>Actions</th>
+      <th>Nome</th>
+      <th>Arquivo</th>
+      <th>Processamento</th>
+      <th>Ações</th>
     </tr>
     </thead>
     <tbody>
@@ -19,18 +15,19 @@
       <tr data-turbo-frame="document_<%= document.id %>">
         <td><%= document.name %></td>
         <td>
-          <%= link_to 'Download File', download_document_path(document), class: 'btn btn-view' %>
+          <%= link_to 'Download', download_document_path(document), class: 'btn btn-view' %>
         </td>
         <td id="document_<%= document.id %>_status"><%= document.status.humanize %></td>
-        <td>
-          <%= button_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-delete' %>
+        <td class="actions">
+          <%= button_to 'Deletar', document_path(document), method: :delete, data: { confirm: 'Você tem certeza?', turbo: false }, class: 'btn btn-delete' %>
+          <%= link_to 'Visualizar', document_path(document), class: 'btn btn-view-report' %>
         </td>
       </tr>
     <% end %>
     </tbody>
   </table>
 
-  <%= link_to 'Upload a XML File', new_document_path, class: 'btn btn-upload' %>
+  <%= link_to 'Upload de XML', new_document_path, class: 'btn btn-upload' %>
 
   <%= turbo_stream_from "document_channel" %>
 </div>

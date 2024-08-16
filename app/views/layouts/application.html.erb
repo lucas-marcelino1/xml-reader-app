@@ -13,6 +13,37 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <% unless current_page?(root_path) %>
+    <div class="navigation-buttons">
+      <a href="javascript:history.back()" class="btn-nav btn-back">Voltar</a>
+      <%= link_to "Home", root_path, class: "btn-nav btn-home" %>
+    </div>
+  <% end %>
+
     <%= yield %>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const notice = document.querySelector('.notice');
+          const alert = document.querySelector('.alert');
+
+          if (notice) {
+              setTimeout(() => {
+                  notice.style.transition = 'opacity 0.25s ease-out';
+                  notice.style.opacity = '0';
+                  setTimeout(() => notice.style.display = 'none', 250);
+              }, 3000);
+          }
+
+          if (alert) {
+              setTimeout(() => {
+                  alert.style.transition = 'opacity 0.25s ease-out';
+                  alert.style.opacity = '0';
+                  setTimeout(() => alert.style.display = 'none', 250);
+              }, 3000);
+          }
+      });
+  </script>
   </body>
 </html>

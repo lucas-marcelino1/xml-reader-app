@@ -32,11 +32,10 @@ html, body {
   height: 100%; /* Garante que o fundo ocupe toda a altura da tela */
 }
 
-.app-title {
+.document-report-title {
   font-size: 2rem;
   color: #333;
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .header-right {
@@ -165,6 +164,28 @@ html, body {
   }
 }
 
+.btn-history {
+  background-color: #f7af07;
+  font-size: 1.5rem;
+  padding: 20px 40px;
+  border-radius: 30px;
+  min-width: 220px;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: darken(#f7af07, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 .documents-index-page {
   position: relative;
 
@@ -198,15 +219,18 @@ html, body {
   }
 
   .documents-table {
-    width: 100%;
+    width: 80%; /* Mantém a largura da tabela em 80% do contêiner */
     border-collapse: collapse;
     margin: 0 auto 30px auto;
+    border-radius: 15px; /* Arredonda as bordas da tabela */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra à tabela */
+    overflow: hidden; /* Garante que o arredondamento funcione corretamente */
 
     th, td {
       padding: 12px 15px;
       text-align: center; /* Centraliza o texto em todas as células */
-      border-bottom: 1px solid #ddd;
-      width: 25%; /* Cada coluna vai ocupar 25% da largura */
+      border: 1px solid transparent; /* Remove as bordas internas visíveis */
+      width: 25%; /* Cada coluna ocupa 25% da largura */
     }
 
     th {
@@ -632,4 +656,252 @@ html, body {
 .forgot-password-button {
   /* Reutilizando a classe do botão de login */
   @extend .btn-signin;
+}
+
+.btn-view-report {
+  background-color: #1c559e;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px; /* Espaçamento inferior */
+}
+
+.btn-view-report:hover {
+  background-color: #14447b;
+  transform: translateY(-2px);
+}
+
+.btn-view-report:active {
+  transform: translateY(0);
+}
+
+.report-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+.invoice-section,
+.product-section,
+.totalizer-section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+#document-report-title {
+  margin-bottom: 0; /* Remove margem inferior do título */
+}
+
+#document-report-data {
+  margin-top: 0.5rem; /* Reduza a margem superior dos dados */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; // espaça igualmente os botões
+  align-items: center; // alinha os botões verticalmente no centro
+
+  .btn {
+    width: 200px; // largura fixa para ambos os botões
+    height: 40px; // altura fixa para ambos os botões
+    margin: 0 10px; // espaço entre os botões
+  }
+}
+
+/* Adicione ao seu arquivo CSS existente */
+.back-button-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* Garante que o botão fique sobre outros elementos */
+}
+
+.btn-back {
+  background-color: #1c559e;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #14447b;
+  }
+}
+
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.welcome-message {
+  font-size: 1.25rem;
+  color: #555;
+}
+
+.btn-signout {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
+/* Estilos para o container de busca */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo para o label */
+.search-label {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilo para o campo de input */
+.search-input {
+  padding: 6px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+/* Estilo para o botão de busca */
+.btn-search {
+  padding: 6px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-search:hover {
+  background-color: #45a049;
+}
+
+/* Tornar o campo de input responsivo */
+.search-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Estilos específicos para os botões de navegação */
+.navigation-buttons {
+  display: inline-flex;
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+
+.btn-home {
+  background-color: #312d2d;
+  padding: 10px 20px; 
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #504e4e;
+  }
+}
+
+// app/assets/stylesheets/no_data_messages.scss
+
+.no-data-message {
+  text-align: center;
+  margin-top: 50px;
+
+  &-text {
+    font-size: 1.5em;
+    padding: 20px;
+    border-radius: 5px;
+
+    &.error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    &.warning {
+      background-color: #d6e9fc;
+      color: #022f4f;
+    }
+  }
+}
+
+.notice, .alert {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
 }

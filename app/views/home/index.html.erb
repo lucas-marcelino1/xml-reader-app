@@ -4,15 +4,16 @@
   <div class="button-box">
     <% if user_signed_in? %>
       <div class="header-right">
-        <div class="welcome-message">Welcome <%= current_user.email %></div>
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
+        <div class="welcome-message">Bem vindo, <%= current_user.email %></div>
+        <%= button_to "Finalizar sessão", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
       </div>
 
-      <%= button_to "Documents Uploaded", documents_path, method: :get, class: "btn btn-uploaded btn-large" %>
-      <%= button_to "Upload a XML File", new_document_path, method: :get, class: "btn btn-upload btn-large" %>
+      <%= button_to "Dados dos XML's", document_data_path, method: :get, class: "btn btn-uploaded btn-large" %>
+      <%= button_to "Documentos", documents_path, method: :get, class: "btn btn-history btn-large" %>
+      <%= button_to "Upload de XML", new_document_path, method: :get, class: "btn btn-upload btn-large" %>
     <% else %>
-      <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-signup btn-large" %>
-      <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-signin btn-large" %>
+      <%= button_to "Cadastrar", new_user_registration_path, method: :get, class: "btn btn-signup btn-large" %>
+      <%= button_to "Entrar", new_user_session_path, method: :get, class: "btn btn-signin btn-large" %>
     <% end %>
   </div>
 </div>

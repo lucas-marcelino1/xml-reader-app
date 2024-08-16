@@ -1,4 +1,4 @@
-<h1 class="upload-title">Make upload of a XML document</h1>
+<h1 class="upload-title">Faça upload de um documento XML</h1>
 
 <%= form_for @document, html: { class: "upload-form" } do |f| %>
 
@@ -7,18 +7,18 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, "Name", class: "form-label" %>
+    <%= f.label :name, "Nome", class: "form-label" %>
     <%= f.text_field :name, class: "form-input" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :upload, "File", class: "form-label" %>
+    <%= f.label :upload, "Arquivo", class: "form-label" %>
     <%= f.file_field :upload, class: "form-input" %>
   </div>
 
   <div class="form-actions">
-    <%= link_to "CANCEL", root_path, class: "btn btn-cancel" %>
-    <%= f.submit "Upload", class: "btn btn-upload", data: { turbo: false } %>
+    <%= link_to "CANCELAR", root_path, class: "btn btn-cancel" %>
+    <%= f.submit "UPLOAD", class: "btn btn-upload", data: { turbo: false } %>
   </div>
 
 <% end %>
