@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       get '/download', to: 'documents#download'
     end
   end
+
+  resources :document_data, only: [:index]
 end

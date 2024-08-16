@@ -1,0 +1,104 @@
+<div class="fullscreen-container">
+  <h1 class="document-report-title">Dados dos XML's</h1>
+
+  <%= form_with url: document_data_path, method: :get, local: true, class: "search-form" do %>
+    <div class="search-container">
+      <%= label_tag :search, "Buscar:", class: "search-label" %>
+      <%= text_field_tag :search, params[:search], class: "search-input" %>
+      <%= submit_tag "Buscar", class: "btn-search" %>
+    </div>
+  <% end %>
+
+  <% if @document_data_grouped.present? %>
+    <% @document_data_grouped.each_value do |group_data| %>
+      <div class="report-container document-report-data">
+        <!-- Informações da Fatura -->
+        <div class="invoice-section">
+          <h2>Dados da Fatura</h2>
+          <table class="report-table">
+            <tr>
+              <th>Número da NF</th>
+              <th>Série</th>
+              <th>Data de Emissão</th>
+              <th>CNPJ Emitente</th>
+              <th>Nome Emitente</th>
+              <th>CNPJ Destinatário</th>
+              <th>Nome Destinatário</th>
+            </tr>
+            <tr>
+              <td><%= group_data[0].data["nNF"] %></td>
+              <td><%= group_data[0].data["serie"] %></td>
+              <td><%= group_data[0].data["dhEmi"] %></td>
+              <td><%= group_data[0].data["emit"]["CNPJ"] %></td>
+              <td><%= group_data[0].data["emit"]["xNome"] %></td>
+              <td><%= group_data[0].data["dest"]["CNPJ"] %></td>
+              <td><%= group_data[0].data["dest"]["xNome"] %></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Informações dos Produtos -->
+        <div class="product-section">
+          <h2>Produtos</h2>
+          <table class="report-table">
+            <tr>
+              <th>NCM</th>
+              <th>CFOP</th>
+              <th>Quantidade</th>
+              <th>Unidade</th>
+              <th>Valor IPI</th>
+              <th>Valor ICMS</th>
+              <th>Descrição do Produto</th>
+              <th>Valor Unitário</th>
+            </tr>
+            <% group_data[1].data.each do |product| %>
+              <tr>
+                <td><%= product["NCM"] %></td>
+                <td><%= product["CFOP"] %></td>
+                <td><%= product["qCom"] %></td>
+                <td><%= product["uCom"] %></td>
+                <td><%= product["vIPI"] %></td>
+                <td><%= product["vICMS"] %></td>
+                <td><%= product["xProd"] %></td>
+                <td><%= product["vUnCom"] %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+
+        <!-- Totalizadores -->
+        <div class="totalizer-section">
+          <h2>Totalizadores</h2>
+          <table class="report-table">
+            <tr>
+              <th>Valor Total da Nota Fiscal</th>
+              <th>Valor IPI</th>
+              <th>Valor ICMS</th>
+              <th>Valor Total dos Produtos</th>
+              <th>Valor Total dos Tributos</th>
+            </tr>
+            <tr>
+              <td><%= group_data[2].data["vNF"] %></td>
+              <td><%= group_data[2].data["vIPI"] %></td>
+              <td><%= group_data[2].data["vICMS"] %></td>
+              <td><%= group_data[2].data["vProd"] %></td>
+              <td><%= group_data[2].data["vTotTrib"] %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no-data-message">
+      <% if params[:search].present? %>
+        <p class="no-data-message-text error">
+          Nenhum registro encontrado.
+        </p>
+      <% else %>
+        <p class="no-data-message-text warning">
+          Nenhum registro disponível. Por favor, faça o upload de arquivos para visualizar as informações.
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
