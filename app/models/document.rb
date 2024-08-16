@@ -1,9 +1,9 @@
 class Document < ApplicationRecord
   validates :name, :upload, presence: true
 
-  has_many :document_data, dependent: :destroy
-
   after_create :set_process_xml_job
+
+  has_many :document_data, dependent: :destroy
 
   mount_uploader :upload, DocumentUploader
 
@@ -17,7 +17,7 @@ class Document < ApplicationRecord
   private
 
   def set_process_xml_job
-    ProcessXmlJob.perform_in(1.seconds, id)
+    ProcessXmlJob.perform_in((1.5).seconds, id)
     self.update!(status: :processing)
   end
 end
