@@ -5,7 +5,7 @@
     <% if user_signed_in? %>
       <div class="header-right">
         <div class="welcome-message">Bem vindo, <%= current_user.email %></div>
-        <%= button_to "Finalizar sessão", destroy_user_session_path, method: :delete, class: "btn btn-signout" %>
+        <%= button_to "Finalizar sessão", destroy_user_session_path, method: :delete, class: "btn btn-signout", data: { turbo: false } %>
       </div>
 
       <%= button_to "Dados dos XML's", document_data_path, method: :get, class: "btn btn-uploaded btn-large" %>

@@ -16,13 +16,13 @@
             <th>Nome Destinatário</th>
           </tr>
           <tr>
-            <td><%= @document_data_invoice&.data&["nNF"] %></td>
-            <td><%= @document_data_invoice&.data&["serie"] %></td>
-            <td><%= @document_data_invoice&.data&["dhEmi"] %></td>
-            <td><%= @document_data_invoice&.data&["emit"]&["CNPJ"] %></td>
-            <td><%= @document_data_invoice&.data&["emit"]&["xNome"] %></td>
-            <td><%= @document_data_invoice&.data&["dest"]&["CNPJ"] %></td>
-            <td><%= @document_data_invoice&.data&["dest"]&["xNome"] %></td>
+            <td><%= @document_data_invoice&.data["nNF"] %></td>
+            <td><%= @document_data_invoice&.data["serie"] %></td>
+            <td><%= @document_data_invoice&.data["dhEmi"] %></td>
+            <td><%= @document_data_invoice&.data["emit"]["CNPJ"] %></td>
+            <td><%= @document_data_invoice&.data["emit"]["xNome"] %></td>
+            <td><%= @document_data_invoice&.data["dest"]["CNPJ"] %></td>
+            <td><%= @document_data_invoice&.data["dest"]["xNome"] %></td>
           </tr>
         </table>
       </div>
@@ -68,11 +68,11 @@
             <th>Valor Total dos Tributos</th>
           </tr>
           <tr>
-            <td><%= @document_data_totalizer&.data&["vNF"] %></td>
-            <td><%= @document_data_totalizer&.data&["vIPI"] %></td>
-            <td><%= @document_data_totalizer&.data&["vICMS"] %></td>
-            <td><%= @document_data_totalizer&.data&["vProd"] %></td>
-            <td><%= @document_data_totalizer&.data&["vTotTrib"] %></td>
+            <td><%= @document_data_totalizer&.data["vNF"] %></td>
+            <td><%= @document_data_totalizer&.data["vIPI"] %></td>
+            <td><%= @document_data_totalizer&.data["vICMS"] %></td>
+            <td><%= @document_data_totalizer&.data["vProd"] %></td>
+            <td><%= @document_data_totalizer&.data["vTotTrib"] %></td>
           </tr>
         </table>
       </div>
