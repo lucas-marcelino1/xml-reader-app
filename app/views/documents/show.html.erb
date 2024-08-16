@@ -1,0 +1,87 @@
+<div class="fullscreen-container">
+  <h1 class="document-report-title">Relatório</h1>
+  <% if @document.document_data.any? %>
+    <div class="report-container document-report-data">
+      <!-- Informações da Fatura -->
+      <div class="invoice-section">
+        <h2>Dados da Fatura</h2>
+        <table class="report-table">
+          <tr>
+            <th>Número da NF</th>
+            <th>Série</th>
+            <th>Data de Emissão</th>
+            <th>CNPJ Emitente</th>
+            <th>Nome Emitente</th>
+            <th>CNPJ Destinatário</th>
+            <th>Nome Destinatário</th>
+          </tr>
+          <tr>
+            <td><%= @document_data_invoice&.data&["nNF"] %></td>
+            <td><%= @document_data_invoice&.data&["serie"] %></td>
+            <td><%= @document_data_invoice&.data&["dhEmi"] %></td>
+            <td><%= @document_data_invoice&.data&["emit"]&["CNPJ"] %></td>
+            <td><%= @document_data_invoice&.data&["emit"]&["xNome"] %></td>
+            <td><%= @document_data_invoice&.data&["dest"]&["CNPJ"] %></td>
+            <td><%= @document_data_invoice&.data&["dest"]&["xNome"] %></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Informações dos Produtos -->
+      <div class="product-section">
+        <h2>Produtos</h2>
+        <table class="report-table">
+          <tr>
+            <th>NCM</th>
+            <th>CFOP</th>
+            <th>Quantidade</th>
+            <th>Unidade</th>
+            <th>Valor IPI</th>
+            <th>Valor ICMS</th>
+            <th>Descrição do Produto</th>
+            <th>Valor Unitário</th>
+          </tr>
+          <% @document_data_product&.data&.each do |product| %>
+            <tr>
+              <td><%= product["NCM"] %></td>
+              <td><%= product["CFOP"] %></td>
+              <td><%= product["qCom"] %></td>
+              <td><%= product["uCom"] %></td>
+              <td><%= product["vIPI"] %></td>
+              <td><%= product["vICMS"] %></td>
+              <td><%= product["xProd"] %></td>
+              <td><%= product["vUnCom"] %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <!-- Totalizadores -->
+      <div class="totalizer-section">
+        <h2>Totalizadores</h2>
+        <table class="report-table">
+          <tr>
+            <th>Valor Total da Nota Fiscal</th>
+            <th>Valor IPI</th>
+            <th>Valor ICMS</th>
+            <th>Valor Total dos Produtos</th>
+            <th>Valor Total dos Tributos</th>
+          </tr>
+          <tr>
+            <td><%= @document_data_totalizer&.data&["vNF"] %></td>
+            <td><%= @document_data_totalizer&.data&["vIPI"] %></td>
+            <td><%= @document_data_totalizer&.data&["vICMS"] %></td>
+            <td><%= @document_data_totalizer&.data&["vProd"] %></td>
+            <td><%= @document_data_totalizer&.data&["vTotTrib"] %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-data-message">
+      <p class="no-data-message-text warning">
+        XML em processamento, por favor recarregue a página.
+      </p>
+    </div>
+  <% end %>
+</div>
