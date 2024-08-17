@@ -6,7 +6,7 @@ class ProcessXmlJob
 
     return unless document.present?
 
-    xml_file_path = document.upload.path
+    xml_file_path = document.upload.url
 
     begin
       parsed_hash = ExtractXmlData.new(xml_file_path).call

@@ -9,7 +9,9 @@ class ExtractXmlData
     require 'nokogiri'
 
     begin
-      xml = File.open(@file_path) { |f| Nokogiri::XML(f) }
+      uri = URI.parse(@file_path)
+      url_data = Net::HTTP.get(uri)
+      xml = Nokogiri.XML(url_data)
 
       return {
         invoice: extract_invoice_data(xml),
