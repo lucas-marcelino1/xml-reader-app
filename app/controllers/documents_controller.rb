@@ -30,7 +30,14 @@ class DocumentsController < ApplicationController
   end
 
   def download
-    send_file @document.upload.path
+    if @document.upload.present?
+      file = URI.open(@document.upload.url)
+
+      send_data file.read, filename: @document.upload.file.filename, type: @document.upload.file.content_type, disposition: 'attachment'
+    else
+      flash[:alert] = "Arquivo não encontrado"
+      redirect_to documents_path
+    end
   end
 
   def show
