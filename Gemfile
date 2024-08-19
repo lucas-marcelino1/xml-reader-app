@@ -86,3 +86,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "factory_bot_rails"

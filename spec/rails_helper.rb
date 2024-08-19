@@ -40,6 +40,15 @@ RSpec.configure do |config|
     driven_by(:rack_test)
   end
 
+  # Include FactoryBot methods
+  config.include FactoryBot::Syntax::Methods
+
+
+  # Include Devise helper methods
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Warden::Test::Helpers
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
