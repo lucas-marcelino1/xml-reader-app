@@ -1,4 +1,4 @@
-<h2 class="signup-title">Sign up</h2>
+<h2 class="signup-title">Cadastrar</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup-form" }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-signup", data: { turbo: false } %>
+    <%= f.submit "Cadastrar", class: "btn btn-signup", data: { turbo: false } %>
   </div>
 <% end %>
 
