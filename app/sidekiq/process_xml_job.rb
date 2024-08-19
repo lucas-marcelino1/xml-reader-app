@@ -14,11 +14,11 @@ class ProcessXmlJob
       document.transaction do
         create_document_data!(document_id, parsed_hash)
         document.update!(status: :completed)
-        broadcast_status(document_id, document.status.humanize, 'blue')
+        broadcast_status(document_id, document.status.humanize)
       end
     rescue => e
       document.update!(status: :failed)
-      broadcast_status(document_id, document.status.humanize, '#721c24')
+      broadcast_status(document_id, document.status.humanize)
       raise e
     end
   end
@@ -31,11 +31,11 @@ class ProcessXmlJob
     end
   end
 
-  def broadcast_status(document_id, status, color)
+  def broadcast_status(document_id, status)
     Turbo::StreamsChannel.broadcast_replace_to(
       "document_channel",  # Channel name
       target: "document_#{document_id}_status",  # Target element ID
-      html: "<td id=document_#{document_id}_status style=#{"color:#{color};"}>#{status}</td>"  # New content for the element
+      html: "<td id=document_#{document_id}_status>#{status}</td>"  # New content for the element
     )
   end
 end

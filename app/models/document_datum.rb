@@ -1,4 +1,6 @@
 class DocumentDatum < ApplicationRecord
+  validates :kind, :data, presence: true
+
   belongs_to :document
 
   enum kind: {

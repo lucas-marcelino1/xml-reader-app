@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
     if @document.save
       redirect_to documents_path, notice: "O documento foi criado com sucesso!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
